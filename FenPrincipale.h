@@ -2,8 +2,7 @@
 #define HEADER_FENPRINCIPALE
 
 #include <QtWidgets>
-
-//#include <QtWebEngineWidgets>
+#include <QtWebEngineWidgets>
 
 class FenPrincipale : public QMainWindow
 {
@@ -11,7 +10,7 @@ class FenPrincipale : public QMainWindow
     FenPrincipale();
 
     private:
-//    QWebEngineView *view;
+    QWebEngineView *view;
 };
 
 #endif
