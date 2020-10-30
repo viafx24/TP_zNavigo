@@ -13,11 +13,14 @@ class FenPrincipale : public QMainWindow
     public:
     FenPrincipale();
 
+    void  adjustLocation();
+    void creationMenu();
+    void  creationToolbar();
     void createStatusBar();
 
 public slots:
 
-   void  adjustLocation();
+
    void  changeLocation();
 
 
