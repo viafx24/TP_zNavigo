@@ -1,8 +1,4 @@
 #include "FenPrincipale.h"
-#include <QtWebEngineWidgets>
-#include <QLineEdit>
-#include <QUrl>
-#include <QStatusBar>
 
 FenPrincipale::FenPrincipale()
 {
