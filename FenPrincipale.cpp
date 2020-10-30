@@ -11,7 +11,7 @@ FenPrincipale::FenPrincipale()
     url = new QUrl("http://www.stackoverflow.com");
     view->load(*url);
 
-    //setFixedSize({800, 600});
+    setFixedSize({800, 600});
 
 
     //setAttribute(Qt::WA_DeleteOnClose);
@@ -60,6 +60,9 @@ FenPrincipale::FenPrincipale()
 
 //    adjustLocation();
     connect(locationEdit, SIGNAL(returnPressed()),this, SLOT(changeLocation()));
+    connect(this, SIGNAL(loadProgress(int)),progressBar, SLOT(setValue(int)));
+
+
     setCentralWidget(view);
  //   connect(actionQuitter, SIGNAL(triggered()), qApp, SLOT(quit()));
 }
@@ -82,8 +85,18 @@ void FenPrincipale::changeLocation()
 
 void  FenPrincipale::createStatusBar()
 {
-    statusBar = new QStatusBar(this);
-    statusBar->showMessage(tr("Ready"));
-//    progressBar= new QProgressBar;
-//    statusBar->addWidget(progressBar);
+   // statusBar()->showMessage("Ready");
+
+      //statusBar = new QStatusBar(this);
+  //  statusBar->showMessage(tr("Ready"));
+    progressBar= new QProgressBar(this);
+    statusLabel = new QLabel(this);
+    statusLabel->setText("Status Label");
+
+
+    statusBar()->addPermanentWidget(statusLabel);
+    statusBar()->addPermanentWidget(progressBar);
+   // progressBar->setValue(51);
+    connect(view, SIGNAL(loadProgress(int)),progressBar, SLOT(setValue(int)));
+
 }

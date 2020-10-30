@@ -27,7 +27,7 @@ public slots:
    // QStatusBar *statusBar;
     QLineEdit *locationEdit;
     QProgressBar *progressBar;
-
+    QLabel *statusLabel;
 
 };
 
