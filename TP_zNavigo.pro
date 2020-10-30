@@ -7,3 +7,6 @@ HEADERS += \
 SOURCES += \
     FenPrincipale.cpp \
     main.cpp
+
+RESOURCES += \
+    Ressources.qrc

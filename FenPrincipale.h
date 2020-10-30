@@ -6,11 +6,29 @@
 
 class FenPrincipale : public QMainWindow
 {
+
+    Q_OBJECT
+
+
     public:
     FenPrincipale();
 
+    void createStatusBar();
+
+public slots:
+
+   void  adjustLocation();
+   void  changeLocation();
+
+
     private:
-    QWebEngineView *view;
+    QUrl *url;
+    QWebEngineView *view;  
+   // QStatusBar *statusBar;
+    QLineEdit *locationEdit;
+    QProgressBar *progressBar;
+
+
 };
 
 #endif
