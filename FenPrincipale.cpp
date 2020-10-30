@@ -2,52 +2,24 @@
 
 FenPrincipale::FenPrincipale()
 {
-
-
-
-
-    //setAttribute(Qt::WA_DeleteOnClose);
-    //   view->show();
-
- //    Création des menus
-//    QMenu *menuFichier = menuBar()->addMenu("&Fichier");
-//    QAction *actionQuitter = menuFichier->addAction("&Quitter");
-//    actionQuitter->setShortcut(QKeySequence("Ctrl+Q"));
-//    actionQuitter->setIcon(QIcon(":/Ressources/home.png"));
-
-//    QMenu *menuEdition = menuBar()->addMenu("&Edition");
-//    QMenu *menuAffichage = menuBar()->addMenu("&Affichage");
-
-
-
-
-//    statusBar = new QStatusBar(this);
-//    progressBar= new QProgressBar(statusBar);
-//    connect(this, SIGNAL(loadProgress(int)),progressBar, SLOT(setValue(int)));
-
-//    loadProgress()
-//[signal]void QWebEngineView::loadProgress(int progress)
-
-
-//    toolBarFichier->addAction(actionQuitter);
-
     view = new QWebEngineView(this);
+    setCentralWidget(view);
+
     url = new QUrl("http://www.stackoverflow.com");
     view->load(*url);
 
     resize(1000,800);
-    //setFixedSize({800, 600});
 
     creationMenu();
     creationToolbar();
     adjustLocation();
     createStatusBar();
 
-   //connect(locationEdit, SIGNAL(returnPressed()),this, SLOT(changeLocation()));
-   // connect(this, SIGNAL(loadProgress(int)),progressBar, SLOT(setValue(int)));
+    connect(locationEdit, SIGNAL(returnPressed()), SLOT(changeLocation()));
 
-
-    setCentralWidget(view);
+// les deux variantes ci-dessous marchent aussi, je m'y perds un peu
+//    connect(locationEdit, SIGNAL(returnPressed()),this, SLOT(changeLocation()));
+//    connect(locationEdit, SIGNAL(returnPressed()),view, SLOT(changeLocation()));
 
 }
 
@@ -58,20 +30,24 @@ void FenPrincipale::creationMenu()
     QAction *actionQuitter = menuFichier->addAction("&Quitter");
     QAction *actionNewOnglet = menuFichier->addAction("&Nouvel onglet");
     QAction *actionCloseOnglet = menuFichier->addAction("&fermer l'onglet");
-    actionQuitter->setShortcut(QKeySequence("Ctrl+Q"));
+    actionQuitter->setShortcut(QKeySequence("Alt+F4"));
     connect(actionQuitter, SIGNAL(triggered()), qApp, SLOT(quit()));
 
 
     QMenu *menuNavigation = menuBar()->addMenu("&Navigation");
-    menuFichier->addAction(view->pageAction(QWebEnginePage::Back));
+    menuNavigation->addAction(view->pageAction(QWebEnginePage::Back));
+    menuNavigation->addAction(view->pageAction(QWebEnginePage::Back));
+    menuNavigation->addAction(view->pageAction(QWebEnginePage::Forward));
+    menuNavigation->addAction(view->pageAction(QWebEnginePage::Reload));
+    menuNavigation->addAction(view->pageAction(QWebEnginePage::Stop));
     //QAction *actionPrecedent = menuFichier->addAction(view->pageAction(QWebEnginePage::Back));
-    QAction *actionSuivant = menuFichier->addAction("&Suivant");
-    QAction *actionActualise = menuFichier->addAction("&Actualiser");
-    QAction *actionHome = menuFichier->addAction("&Pagde d'accueil");
-    QAction *actionStop = menuFichier->addAction("&Arrêter");
+//    QAction *actionSuivant = menuFichier->addAction("&Suivant");
+//    QAction *actionActualise = menuFichier->addAction("&Actualiser");
+//    QAction *actionHome = menuFichier->addAction("&Pagde d'accueil");
+//    QAction *actionStop = menuFichier->addAction("&Arrêter");
 
     QMenu *menuAide = menuBar()->addMenu("&Aide");
-    QAction *actionApropos = menuFichier->addAction("&Apropos");
+    QAction *actionApropos = menuAide->addAction("&A propos de zNavigator");
 
 
 }
@@ -96,15 +72,6 @@ void FenPrincipale::adjustLocation()
     locationEdit->setText(url->toString());
 }
 
-void FenPrincipale::changeLocation()
-{
-    *url= url->fromUserInput(locationEdit->text());
-    view->load(*url);
-    view->setFocus();
-
-    connect(locationEdit, SIGNAL(returnPressed()),this, SLOT(changeLocation()));
-}
-
 
 void  FenPrincipale::createStatusBar()
 {
@@ -115,5 +82,16 @@ void  FenPrincipale::createStatusBar()
     statusBar()->addPermanentWidget(statusLabel);
     statusBar()->addPermanentWidget(progressBar);
     connect(view, SIGNAL(loadProgress(int)),progressBar, SLOT(setValue(int)));
+
+}
+
+
+//Slots
+
+void FenPrincipale::changeLocation()
+{
+    *url= url->fromUserInput(locationEdit->text());
+    view->load(*url);
+    view->setFocus();
 
 }
