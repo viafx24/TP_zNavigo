@@ -43,9 +43,9 @@ void FenPrincipale::creationMenu()
     //QAction *actionPrecedent = menuFichier->addAction(view->pageAction(QWebEnginePage::Back));
 //    QAction *actionSuivant = menuFichier->addAction("&Suivant");
 //    QAction *actionActualise = menuFichier->addAction("&Actualiser");
-//    QAction *actionHome = menuFichier->addAction("&Pagde d'accueil");
+    QAction *actionHome = menuFichier->addAction("&Pagde d'accueil");
 //    QAction *actionStop = menuFichier->addAction("&Arrêter");
-
+    connect(actionHome, SIGNAL(triggered()),this, SLOT(setHome()));
     QMenu *menuAide = menuBar()->addMenu("&Aide");
     QAction *actionApropos = menuAide->addAction("&A propos de zNavigator");
 
