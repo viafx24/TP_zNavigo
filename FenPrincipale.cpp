@@ -48,6 +48,7 @@ void FenPrincipale::creationMenu()
     connect(actionHome, SIGNAL(triggered()),this, SLOT(setHome()));
     QMenu *menuAide = menuBar()->addMenu("&Aide");
     QAction *actionApropos = menuAide->addAction("&A propos de zNavigator");
+    connect(actionApropos, SIGNAL(triggered()),this, SLOT(aPropos()));
 
 
 }
