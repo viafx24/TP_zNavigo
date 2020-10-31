@@ -32,6 +32,7 @@ public slots:
     QLineEdit *locationEdit;
     QProgressBar *progressBar;
     QLabel *statusLabel;
+    QAction *actionHome;
 
 };
 

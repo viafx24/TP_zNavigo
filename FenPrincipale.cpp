@@ -43,7 +43,7 @@ void FenPrincipale::creationMenu()
     //QAction *actionPrecedent = menuFichier->addAction(view->pageAction(QWebEnginePage::Back));
 //    QAction *actionSuivant = menuFichier->addAction("&Suivant");
 //    QAction *actionActualise = menuFichier->addAction("&Actualiser");
-    QAction *actionHome = menuFichier->addAction("&Pagde d'accueil");
+    actionHome = menuFichier->addAction("&Pagde d'accueil");
 //    QAction *actionStop = menuFichier->addAction("&Arrêter");
     connect(actionHome, SIGNAL(triggered()),this, SLOT(setHome()));
     QMenu *menuAide = menuBar()->addMenu("&Aide");
@@ -61,6 +61,8 @@ void FenPrincipale::creationToolbar()
     toolBar->addAction(view->pageAction(QWebEnginePage::Forward));
     toolBar->addAction(view->pageAction(QWebEnginePage::Reload));
     toolBar->addAction(view->pageAction(QWebEnginePage::Stop));
+    toolBar->addAction(actionHome);
+    actionHome->setIcon(QIcon(":/Ressources/home.png"));
 
     locationEdit = new QLineEdit(this);
     locationEdit->setSizePolicy(QSizePolicy::Expanding, locationEdit->sizePolicy().verticalPolicy());
