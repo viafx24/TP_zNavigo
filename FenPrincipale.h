@@ -22,7 +22,8 @@ public slots:
 
 
    void  changeLocation();
-
+   void setHome();
+   void aPropos();
 
     private:
     QUrl *url;

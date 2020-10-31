@@ -95,3 +95,18 @@ void FenPrincipale::changeLocation()
     view->setFocus();
 
 }
+
+void FenPrincipale::setHome()
+{
+    view->url().setUrl("http://www.google.fr");
+    view->load(pageActuelle()->url());
+//    view->setFocus();
+    locationEdit->setText(pageActuelle()->url().toString());
+}
+
+void FenPrincipale::aPropos()
+{
+
+QMessageBox::aboutQt(this, "test");
+
+}
