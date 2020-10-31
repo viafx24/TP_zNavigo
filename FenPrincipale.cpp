@@ -96,12 +96,13 @@ void FenPrincipale::changeLocation()
 
 }
 
+
 void FenPrincipale::setHome()
 {
-    view->url().setUrl("http://www.google.fr");
-    view->load(pageActuelle()->url());
+    url->setUrl("http://www.google.fr");
+    view->load(*url);
 //    view->setFocus();
-    locationEdit->setText(pageActuelle()->url().toString());
+    locationEdit->setText(url->toString());
 }
 
 void FenPrincipale::aPropos()
