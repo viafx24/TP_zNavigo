@@ -1,3 +1,7 @@
+// code de base d'une fonction main pour une Gui sous Qt.
+// FenPrincipale est une classe de type QMainWindows.
+
+
 #include <QApplication>
 #include <QtWidgets>
 #include <QtWebEngineWidgets>

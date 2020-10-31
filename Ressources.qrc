@@ -1,11 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>Ressources/actu.png</file>
-        <file>Ressources/go.png</file>
         <file>Ressources/home.png</file>
-        <file>Ressources/prec.png</file>
-        <file>Ressources/stop.png</file>
-        <file>Ressources/suiv.png</file>
-        <file>Ressources/web.png</file>
     </qresource>
 </RCC>
